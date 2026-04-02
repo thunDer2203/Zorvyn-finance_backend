@@ -60,11 +60,11 @@ router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
     }
 
     const { id } = req.params;
+    // console.log(id)
     const {  amount,category,date,notes,type } = req.body;
 
     try {
         const updatedRecord = await Record.findById(id)
-        // console.log(updatedRecord)
         updatedRecord.amount = amount !== undefined ? amount : updatedRecord.amount;
         updatedRecord.category = category !==undefined ? category : updatedRecord.category ;
         updatedRecord.date = date !== undefined ? date : updatedRecord.date;
