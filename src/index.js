@@ -5,11 +5,24 @@ const cookieParser = require('cookie-parser');
 const { connectDB } = require('./lib/db.js');
 const authRoutes = require('./routes/auth.route.js');
 const financeRoutes=require('./routes/finance.js');
+const rateLimit = require("express-rate-limit");
+
+
+
+
+dotenv.config();
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 mins
+    max: 100, // max 100 requests
+    message: "Too many requests, try later"
+});
+
 
 
 connectDB();
 const app = express();
-dotenv.config();
+app.use(limiter);
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
