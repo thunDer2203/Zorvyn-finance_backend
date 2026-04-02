@@ -16,7 +16,6 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "epxress": "^0.0.1-security",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongod": "^2.0.0",
