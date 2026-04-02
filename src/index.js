@@ -6,7 +6,22 @@ const { connectDB } = require('./lib/db.js');
 const authRoutes = require('./routes/auth.route.js');
 const financeRoutes=require('./routes/finance.js');
 const rateLimit = require("express-rate-limit");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+const manageUsers=require("./routes/manage.user.js")
 
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Zorvyn API",
+      version: "1.0.0"
+    }
+  },
+  apis: ["./src/**/*.js"]
+};
+
+const specs = swaggerJsdoc(options);
 
 
 
@@ -27,6 +42,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/users',manageUsers);
 app.use('/api/auth', authRoutes);
 app.use('/api/finance', financeRoutes);
 
