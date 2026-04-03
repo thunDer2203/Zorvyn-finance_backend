@@ -16,7 +16,10 @@ router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
 
     try {
         const updatedUser = await User.findById(id)
-        console.log(updatedUser)
+        // console.log(updatedUser)
+        if(!updatedUser){
+            return res.status(404).json("User not found");
+        }
         updatedUser.username = username !== undefined ? username : updatedUser.username;
         updatedUser.role= role !==undefined ? role : updatedUser.role ;
         updatedUser.active= active !== undefined ? active : updatedUser.active;
@@ -56,14 +59,14 @@ router.delete("/delete/:id", protectRoute, AssignRole, async (req, res) => {
     const userRole= req.userRole;
     const password=req.body.password;
 
-    console.log(req.user._id)
+    // console.log(req.user._id)
 
     if(!password){
         return res.status(400).json("Password is required for deletion");
     }
 
     const user=await User.findById(req.user._id);
-    console.log("User found in DB for deletion:", user)
+    // console.log("User found in DB for deletion:", user)
     const isCorrect=await bcrypt.compare(password,user.password);
 
     if(!isCorrect){
