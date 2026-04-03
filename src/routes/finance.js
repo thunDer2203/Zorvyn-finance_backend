@@ -65,6 +65,9 @@ router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
 
     try {
         const updatedRecord = await Record.findById(id)
+        if(!updatedRecord){
+            return res.status(404).json("Record not found");
+        }
         updatedRecord.amount = amount !== undefined ? amount : updatedRecord.amount;
         updatedRecord.category = category !==undefined ? category : updatedRecord.category ;
         updatedRecord.date = date !== undefined ? date : updatedRecord.date;
