@@ -110,6 +110,7 @@ POST /api/auth/logout
 
 ### User Routes
 GET /api/users/getusers
+
 PUT /api/update/:id  
 DELETE /api/delete/:id  
 
