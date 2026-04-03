@@ -3,8 +3,10 @@ const bcrypt = require("bcryptjs");
 const { protectRoute, AssignRole } = require("../middleware/auth.middleware.js");
 const User = require("../models/users.js");
 const { getUsers } = require("../controllers/getUsers.js");
+const { updateUserSchema } = require('../validators/userValidator');
+const { validate } = require('../middleware/validate');
 
-router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
+router.put("/update/:id", protectRoute, AssignRole, validate(updateUserSchema), async (req, res) => {
     const userRole= req.userRole;
 
     if(userRole !== 'admin') {
