@@ -71,11 +71,16 @@ A secure and scalable backend system for managing user authentication and financ
 
 ```
 src/
-│── controllers/
-│── lib/
-│── middleware/
-│── models/
-│── routes/
+│
+├── controllers/     # Business logic
+├── middleware/      # Auth, validation, role checks
+├── models/          # Mongoose schemas
+├── routes/          # API routes
+├── validators/      # Joi schemas
+├── config/          # DB configuration
+├── utils/           # Helper functions
+│
+└── server.js        # Entry point
 ```
 
 ---
