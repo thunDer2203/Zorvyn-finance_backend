@@ -80,7 +80,7 @@ src/
 ├── config/          # DB configuration
 ├── utils/           # Helper functions
 │
-└── server.js        # Entry point
+└── index.js        # Entry point
 ```
 
 ---
