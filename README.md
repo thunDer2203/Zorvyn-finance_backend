@@ -109,9 +109,9 @@ POST /api/auth/login
 POST /api/auth/logout  
 
 ### User Routes
-GET /api/auth/users/getusers
-PUT /api/auth/update/:id  
-DELETE /api/auth/delete/:id  
+GET /api/users/getusers
+PUT /api/update/:id  
+DELETE /api/delete/:id  
 
 ### Finance Routes
 POST /api/finance/add  
