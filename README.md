@@ -62,6 +62,7 @@ A secure and scalable backend system for managing user authentication and financ
 - cookie-parser
 - dotenv
 - express-rate-limit
+- Joi
 
 ---
 
