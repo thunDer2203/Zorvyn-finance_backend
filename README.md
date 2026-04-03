@@ -30,8 +30,6 @@ A secure and scalable backend system for managing user authentication and financ
 - Protected routes with middleware
 - Role-based authorization
 
----
-
 ### 🧾 Validation & Data Integrity
 - Input validation using **Joi**
 - Strict type enforcement (no invalid data allowed)
