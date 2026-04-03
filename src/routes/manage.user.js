@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { protectRoute, AssignRole } = require("../middleware/auth.middleware.js");
 const User = require("../models/users.js");
+const { getUsers } = require("../controllers/getUsers.js");
 
 router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
     const userRole= req.userRole;
@@ -42,8 +43,7 @@ router.get("/getusers", protectRoute, AssignRole, async (req, res) => {
     }
 
     try {
-        const users = await User.find({}, { password: 0 }); // Exclude password field
-        res.status(200).json(users);
+        getUsers(req, res);
     } catch (error) {
         res.status(500).json({ message: "Error fetching users", error });
     }
