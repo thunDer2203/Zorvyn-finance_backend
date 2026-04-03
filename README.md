@@ -32,6 +32,17 @@ A secure and scalable backend system for managing user authentication and financ
 
 ---
 
+### 🧾 Validation & Data Integrity
+- Input validation using **Joi**
+- Strict type enforcement (no invalid data allowed)
+- Optional fields supported for update operations
+- Prevents malformed or incomplete data from entering the database
+- Centralized validation middleware for consistency
+- Returns clear and structured error messages
+
+
+---
+
 ## 🧠 System Workflow
 
 1. Admin logs in
