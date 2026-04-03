@@ -104,8 +104,7 @@ A secure, scalable backend system for managing users and financial records, buil
 - email: String (unique)  
 - password: String (hashed)  
 - role: "admin" | "analyst" | "viewer"  
-- isActive: Boolean  
-- createdAt: Date  
+- active: Boolean    
 
 ---
 
@@ -113,10 +112,13 @@ A secure, scalable backend system for managing users and financial records, buil
 
 - amount: Number  
 - type: "income" | "expense"  
-- category: String  
+- category: "Groceries" | "Utilities"  | "Entertainment" | "Business" | "Miscellaneous" | "Income"  
 - date: Date  
 - notes: String  
-- createdAt: Date  
+- createdAt: Date
+- userId : ref:User
+- createdBy: String
+- createdAt : Date
 
 ---
 
@@ -147,7 +149,7 @@ src/
 ├── config/          # Database config
 ├── utils/           # Helper functions
 │
-└── server.js        # Entry point
+└── index.js        # Entry point
 ```
 
 ---
@@ -206,8 +208,8 @@ POST /api/auth/logout
 ### 👤 Users
 ```
 GET    /api/users/getusers
-PUT    /api/users/:id
-DELETE /api/users/:id
+PUT    /api/users/update/:id
+DELETE /api/users/delete/:id
 ```
 
 ---
@@ -216,7 +218,7 @@ DELETE /api/users/:id
 ```
 POST   /api/finance/add
 GET    /api/finance/records
-GET    /api/finance/summary
+GET    /api/finance/getsummary
 PUT    /api/finance/update/:id
 DELETE /api/finance/delete/:id
 ```
