@@ -1,16 +1,15 @@
 const router=require("express").Router()
 const bcrypt=require("bcryptjs")
-// const { connectDB } = require("../lib/db.js");
-// const { generateToken } = require("../lib/utils.js");
-// const User=require("../models/users.js");
 const { protectRoute,AssignRole } = require("../middleware/auth.middleware.js");
 const Record=require("../models/records.js");
 const User=require("../models/users.js");
 const {getFiltered}=require("../controllers/filters.js")
 const { getSummary } = require("../controllers/summary.js");
+const { recordSchema,updateSchema } = require('../validators/recordValidator');
+const { validate } = require('../middleware/validate');
 
 
-router.post("/add", protectRoute, AssignRole, async (req, res) => {
+router.post("/add", protectRoute, AssignRole, validate(recordSchema), async (req, res) => {
     // Finance-related logic here
     const userRole= req.userRole;
 
@@ -52,7 +51,7 @@ router.get("/getsummary", protectRoute, getSummary);
 // });
 
 
-router.put("/update/:id", protectRoute, AssignRole, async (req, res) => {
+router.put("/update/:id", protectRoute, AssignRole,validate(updateSchema),  async (req, res) => {
     const userRole= req.userRole;
 
     if(userRole !== 'admin') {

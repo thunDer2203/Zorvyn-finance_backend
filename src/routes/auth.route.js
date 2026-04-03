@@ -4,9 +4,11 @@ const bcrypt=require("bcryptjs")
 const { generateToken } = require("../lib/utils.js");
 const User=require("../models/users.js");
 const { protectRoute,AssignRole } = require("../middleware/auth.middleware.js");
+const { userSchema } = require('../validators/userValidator');
+const { validate } = require('../middleware/validate');
 
 
-router.post("/signup",protectRoute, AssignRole, async (req,res)=>{
+router.post("/signup",protectRoute, AssignRole, validate(userSchema), async (req,res)=>{
 
 
 const userRole= req.userRole;
