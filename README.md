@@ -1,4 +1,4 @@
-# 🏦 Zorvyn Finance Backend
+# 🏦 Finance Backend API
 
 A secure, scalable backend system for managing users and financial records, built with **Node.js, Express, and MongoDB**.
 
